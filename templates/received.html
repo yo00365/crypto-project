@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emails</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #007BFF;
+        }
+
+        p {
+            margin: 10px 0 0;
+        }
+
+        .email-body {
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Received Emails</h2>
+    {% if received_emails %}
+        <ul>
+            {% for email in received_emails %}
+                <li>
+                    <strong>From:</strong> {{ email.sender }}<br>
+                    <strong>Subject:</strong> {{ email.subject }}<br>
+                    <strong>Body:</strong><br>
+                    <p class="email-body">{{ email.body }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No received emails.</p>
+    {% endif %}
+</body>
+</html>
